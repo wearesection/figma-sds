@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import {
   Card,
+  CardBanner,
   PricingCard,
   ProductInfoCard,
   ReviewCard,
@@ -284,5 +285,19 @@ export const StoryTestimonialCard: StoryObj<typeof TestimonialCard> = {
         name="Full Name"
       />
     </Flex>
+  ),
+};
+
+export const StoryCardBanner: StoryObj<typeof CardBanner> = {
+  name: "Card Banner",
+  render: () => (
+    <CardBanner
+      icon={<IconActivity size="32" />}
+      heading="Card Banner"
+      body="This is a card banner with some body text. It has an icon, a header, a body, an action button, and a close button."
+      actionLabel="Action"
+      onAction={() => console.log("Action clicked")}
+      onClose={() => console.log("Close clicked")}
+    />
   ),
 };
