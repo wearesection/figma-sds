@@ -121,7 +121,7 @@
   &.avatar-group-spacing-negative-200,
   &.avatar-group-spacing-negative-300 {
     > .avatar {
-      box-shadow: var(--sds-effects-shadows-drop-shadow-200);
+      box-shadow: var(--sds-effects-shadows-drop-shadow-500);
     }
   }
   &.avatar-group-spacing-negative-100 {

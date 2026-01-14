@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { placeholder } from "images";
+import { placeholder, placeholder1, placeholder2, placeholder3 } from "images";
 import { Flex } from "layout";
 import { Avatar, AvatarBlock, AvatarButton, AvatarGroup } from "primitives";
 import "react";
@@ -87,6 +87,22 @@ export const StoryAvatarGroup: StoryObj<typeof AvatarGroup> = {
       <Avatar initials="LO" />
       <Avatar src={placeholder} />
       <Avatar initials="WM" />
+      <Avatar src={placeholder} />
+    </AvatarGroup>
+  ),
+};
+
+export const StoryAvatarGroupMolecule: StoryObj<typeof AvatarGroup> = {
+  name: "Avatar Group Molecule",
+  args: {
+    spacing: "negative-200",
+    max: 3,
+  },
+  render: (args) => (
+    <AvatarGroup {...args}>
+      <Avatar src={placeholder1} />
+      <Avatar src={placeholder2} />
+      <Avatar src={placeholder3} />
       <Avatar src={placeholder} />
     </AvatarGroup>
   ),
