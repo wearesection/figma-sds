@@ -11,41 +11,49 @@ export function Pagination({
   className,
   ...props
 }: PaginationProps) {
-  const classNames = clsx("pagination");
+  const classNames = clsx("pagination", className);
   return <nav aria-label={ariaLabel} {...props} className={classNames} />;
+}
+
+export interface PaginationPreviousProps extends Omit<React.ComponentProps<typeof Button>, "href"> {
+  href?: string | null;
+  children?: React.ReactNode;
 }
 
 export function PaginationPrevious({
   href = null,
   children = "Previous",
-}: {
-  href?: string | null;
-  children?: React.ReactNode;
-}) {
+  ...props
+}: PaginationPreviousProps) {
   return (
     <Button
-      {...(href === null ? { disabled: true } : { href })}
-      variant="subtle"
-      aria-label="Previous page"
-    >
-      <IconArrowLeft />
-      {children}
-    </Button>
+       {...(href === null ? { disabled: true } : { href })}
+       variant="subtle"
+       aria-label="Previous page"
+       {...props}
+     >
+       <IconArrowLeft />
+       {children}
+     </Button>
   );
+}
+
+export interface PaginationNextProps extends Omit<React.ComponentProps<typeof Button>, "href"> {
+  href?: string | null;
+  children?: React.ReactNode;
 }
 
 export function PaginationNext({
   href = null,
   children = "Next",
-}: {
-  href?: string | null;
-  children?: React.ReactNode;
-}) {
+  ...props
+}: PaginationNextProps) {
   return (
     <Button
       {...(href === null ? { disabled: true } : { href })}
       variant="subtle"
       aria-label="Next page"
+      {...props}
     >
       {children}
       <IconArrowRight />
@@ -58,15 +66,18 @@ export function PaginationList({ children }: { children: React.ReactNode }) {
   return isTabletUp && <span className="pagination-list">{children}</span>;
 }
 
+export interface PaginationPageProps extends React.ComponentProps<typeof Button> {
+  href: string;
+  children: string;
+  current?: boolean;
+}
+
 export function PaginationPage({
   href,
   children,
   current = false,
-}: {
-  href: string;
-  children: string;
-  current?: boolean;
-}) {
+  ...props
+}: PaginationPageProps) {
   return (
     <Button
       href={href}
@@ -74,6 +85,7 @@ export function PaginationPage({
       aria-current={current ? "page" : undefined}
       variant={current ? "primary" : "subtle"}
       className={clsx()}
+      {...props}
     >
       <span className="">{children}</span>
     </Button>
