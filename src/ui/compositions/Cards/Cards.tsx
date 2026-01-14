@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { PricingPlan, Product } from "data";
 import { useMediaQuery } from "hooks";
-import { IconStar } from "icons";
+import { IconStar, IconX } from "icons";
 import { Flex } from "layout";
 import {
   Avatar,
@@ -10,6 +10,7 @@ import {
   Button,
   ButtonGroup,
   ButtonProps,
+  IconButton,
   Image,
   Text,
   TextHeading,
@@ -549,6 +550,66 @@ export function TestimonialCard({
       <AvatarBlock title={name} description={`@${username}`}>
         <Avatar size="large" src={src} initials={initials} />
       </AvatarBlock>
+    </Card>
+  );
+}
+
+export type CardBannerProps = {
+  /**
+   * The icon for the banner
+   */
+  icon?: ReactNode;
+  /**
+   * The heading
+   */
+  heading: string;
+  /**
+   * The body text
+   */
+  body: string;
+  /**
+   * The action button text
+   */
+  actionLabel: string;
+  /**
+   * The action button callback
+   */
+  onAction: () => void;
+  /**
+   * Close button callback
+   */
+  onClose: () => void;
+};
+
+/**
+ * A banner card with icon, header, body, button and close button
+ */
+export function CardBanner({
+  icon,
+  heading,
+  body,
+  actionLabel,
+  onAction,
+  onClose,
+  ...props
+}: CardBannerProps & Omit<CardProps, "children">) {
+  return (
+    <Card {...props} padding="600" direction="vertical" variant="stroke">
+      <Flex direction="row" alignPrimary="space-between" alignSecondary="start">
+        <Flex direction="column" gap="400" alignPrimary="start">
+          {icon}
+          <Flex direction="column" gap="100">
+            <TextHeading>{heading}</TextHeading>
+            <Text>{body}</Text>
+          </Flex>
+          <Button variant="primary" onPress={onAction}>
+            {actionLabel}
+          </Button>
+        </Flex>
+        <IconButton aria-label="Close" onPress={onClose} variant="neutral">
+          <IconX />
+        </IconButton>
+      </Flex>
     </Card>
   );
 }

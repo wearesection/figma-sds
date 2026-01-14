@@ -1,0 +1,38 @@
+.infinite-carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-400, 16px);
+}
+
+.infinite-carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-medium, 8px);
+}
+
+.infinite-carousel-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infinite-carousel-prev {
+  left: var(--space-200, 8px);
+}
+
+.infinite-carousel-next {
+  right: var(--space-200, 8px);
+}
+
+.infinite-carousel-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-100, 4px);
+}
