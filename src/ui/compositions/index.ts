@@ -5,4 +5,6 @@ export * from "./Headers/Headers";
 export * from "./Sections/Heroes";
 export * from "./Sections/Panels";
 export * from "./PaginationList";
+export * from "./InfiniteCarousel";
+
 
