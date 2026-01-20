@@ -34,6 +34,11 @@ export async function getFileVariables(fileKey, nameSpace) {
       headers: { "X-FIGMA-TOKEN": TOKEN },
     });
     const data = await fileResponse.json();
+    if (data.error) {
+      throw new Error(
+        `Figma API Error: ${data.message} \n\nCheck that your FIGMA_ACCESS_TOKEN has the 'file_variables:read' scope.`,
+      );
+    }
     return variablesRESTResponseToVariablesJSON(data, nameSpace);
   } catch (e) {
     throw e;
@@ -102,12 +107,12 @@ function variablesRESTResponseToVariablesJSON(response, nameSpace) {
 
   collections.forEach(
     (collection) =>
-      (object[idToKey[collection.id]] = restAPICollectionResponseToJSON(
-        nameSpace,
-        idToKey,
-        response.meta.variables,
-        collection,
-      )),
+    (object[idToKey[collection.id]] = restAPICollectionResponseToJSON(
+      nameSpace,
+      idToKey,
+      response.meta.variables,
+      collection,
+    )),
   );
 
   return object;
