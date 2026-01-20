@@ -76,15 +76,15 @@
   "Radius": {
     "100": {
       "$type": "number",
-      "$value": 0
+      "$value": 2
     },
     "200": {
       "$type": "number",
-      "$value": 0
+      "$value": 4
     },
     "400": {
       "$type": "number",
-      "$value": 0
+      "$value": 6
     },
     "Full": {
       "$type": "number",
