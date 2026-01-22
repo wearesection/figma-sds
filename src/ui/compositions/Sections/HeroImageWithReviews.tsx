@@ -1,125 +1,101 @@
+import { Button } from "primitives";
+import { TextContentTitle } from "primitives";
+import { Flex } from "layout";
+import { Section } from "layout";
+import { ReviewCard } from "compositions";
 import { useMediaQuery } from "hooks";
-import { Flex, Section, type SectionProps } from "layout";
-import { Button, TextContentTitle } from "primitives";
-import { ReviewCard } from "../Cards/Cards";
+import type { ReviewCardProps } from "compositions";
 
-export type HeroImageWithReviewsProps = Omit<
-  SectionProps,
-  "variant" | "src"
-> & {
+export type HeroImageWithReviewsProps = {
   /**
-   * Background image URL (required)
-   */
-  backgroundImage: string;
-
-  /**
-   * Main heading text
+   * The main title text
    */
   title: string;
-
   /**
-   * Optional subheading text
+   * The subtitle text (optional)
    */
   subtitle?: string;
-
   /**
-   * CTA button text (if not provided, button is hidden)
+   * The CTA button text (optional)
    */
   buttonText?: string;
-
   /**
-   * Button link href
+   * Callback when button is clicked
    */
-  buttonHref?: string;
-
+  onButtonClick?: () => void;
   /**
-   * Button click handler
+   * Background image source
    */
-  onButtonPress?: () => void;
-
+  backgroundImageSrc: string;
   /**
-   * Array of review data
+   * Array of review data to display
    */
-  reviews: Array<{
-    stars: number;
-    title: string;
-    body: string;
-    name: string;
-    date: string;
-    src?: string;
-  }>;
+  reviews: ReviewCardProps[];
+  /**
+   * Section padding (defaults to 4000)
+   */
+  padding?: "600" | "800" | "1200" | "1600" | "4000";
+  /**
+   * Gap between sections (defaults to 1200)
+   */
+  gap?: "100" | "200" | "300" | "400" | "600" | "800" | "1200" | "1600";
 };
 
 /**
- * Hero section with background image, title/subtitle, CTA button, and review cards.
- * Fully responsive with desktop (horizontal) and mobile (vertical) layouts.
+ * A responsive hero section component with background image, title/subtitle/button, and review cards grid.
+ * Desktop layout: title/button on left, review cards in wrap grid on right.
+ * Mobile layout: title/button centered at top, review cards stacked below.
  */
 export function HeroImageWithReviews({
-  backgroundImage,
   title,
   subtitle,
   buttonText,
-  buttonHref,
-  onButtonPress,
+  onButtonClick,
+  backgroundImageSrc,
   reviews,
-  ...sectionProps
+  padding = "4000",
+  gap = "1200",
 }: HeroImageWithReviewsProps) {
-  const { isTabletDown } = useMediaQuery();
+  const { isMobile } = useMediaQuery();
 
   return (
-    <Section
-      variant="image"
-      src={backgroundImage}
-      padding="1600"
-      {...sectionProps}
-    >
+    <Section padding={padding} variant="image" src={backgroundImageSrc}>
       <Flex
-        direction={isTabletDown ? "column" : "row"}
-        gap={isTabletDown ? "800" : "1600"}
-        alignPrimary={isTabletDown ? "center" : "space-between"}
-        alignSecondary="center"
+        container
+        direction={isMobile ? "column" : "row"}
+        gap={gap}
+        alignPrimary={isMobile ? "center" : "start"}
+        alignSecondary={isMobile ? "center" : "start"}
       >
-        {/* Left column: Title and Button */}
+        {/* Title + Button section */}
         <Flex
           direction="column"
           gap="400"
-          alignSecondary={isTabletDown ? "center" : "start"}
+          alignSecondary={isMobile ? "center" : "start"}
         >
           <TextContentTitle
             title={title}
             subtitle={subtitle}
-            align={isTabletDown ? "center" : "start"}
+            align={isMobile ? "center" : "start"}
           />
           {buttonText && (
-            <Button
-              variant="primary"
-              size="medium"
-              href={buttonHref}
-              onPress={onButtonPress}
-            >
+            <Button variant="primary" onPress={onButtonClick}>
               {buttonText}
             </Button>
           )}
         </Flex>
 
-        {/* Right column: Review Cards Grid */}
+        {/* Review cards grid */}
         <Flex
-          container
           wrap
           gap="600"
-          type={isTabletDown ? undefined : "third"}
-          alignPrimary={isTabletDown ? "center" : "start"}
+          direction="row"
+          type="third"
+          alignPrimary={isMobile ? "center" : "start"}
+          style={{ flex: isMobile ? undefined : "1 0 0" }}
         >
-          {reviews.map((review, index) => (
-            <ReviewCard
-              key={index}
-              stars={review.stars}
-              title={review.title}
-              body={review.body}
-              name={review.name}
-              date={review.date}
-              src={review.src}
-            />
+          {reviews.map((review, idx) => (
+            <ReviewCard key={idx} {...review} />
           ))}
         </Flex>
       </Flex>
