@@ -1,0 +1,156 @@
+{
+  "Title Page": {
+    "Font Family": {
+      "$type": "text",
+      "$value": "{Family Sans}"
+    },
+    "Font Weight": {
+      "$type": "number",
+      "$value": "{Weight Bold}"
+    },
+    "Size Small": {
+      "$type": "number",
+      "$value": "{Scale 07}"
+    },
+    "Size Base": {
+      "$type": "number",
+      "$value": "{Scale 08}"
+    },
+    "Size Large": {
+      "$type": "number",
+      "$value": "{Scale 09}"
+    }
+  },
+  "Subtitle": {
+    "Font Family": {
+      "$type": "text",
+      "$value": "{Family Sans}"
+    },
+    "Size Base": {
+      "$type": "number",
+      "$value": "{Scale 06}"
+    },
+    "Font Weight": {
+      "$type": "number",
+      "$value": "{Weight Regular}"
+    },
+    "Size Large": {
+      "$type": "number",
+      "$value": "{Scale 07}"
+    },
+    "Size Small": {
+      "$type": "number",
+      "$value": "{Scale 05}"
+    }
+  },
+  "Body": {
+    "Font Family": {
+      "$type": "text",
+      "$value": "{Family Sans}"
+    },
+    "Font Style Italic": {
+      "$type": "text",
+      "$value": "{Weight Regular Italic}"
+    },
+    "Size Medium": {
+      "$type": "number",
+      "$value": "{Scale 03}"
+    },
+    "Font Weight Regular": {
+      "$type": "number",
+      "$value": "{Weight Regular}"
+    },
+    "Size Large": {
+      "$type": "number",
+      "$value": "{Scale 04}"
+    },
+    "Size Small": {
+      "$type": "number",
+      "$value": "{Scale 02}"
+    },
+    "Font Weight Strong": {
+      "$type": "number",
+      "$value": "{Weight Semibold}"
+    }
+  },
+  "Code": {
+    "Font Family": {
+      "$type": "text",
+      "$value": "{Family Mono}"
+    },
+    "Size Base": {
+      "$type": "number",
+      "$value": "{Body.Size Medium}"
+    },
+    "Font Weight": {
+      "$type": "number",
+      "$value": "{Body.Font Weight Regular}"
+    },
+    "Size Large": {
+      "$type": "number",
+      "$value": "{Body.Size Large}"
+    },
+    "Size Small": {
+      "$type": "number",
+      "$value": "{Body.Size Small}"
+    }
+  },
+  "Heading": {
+    "Font Family": {
+      "$type": "text",
+      "$value": "{Family Sans}"
+    },
+    "Size Base": {
+      "$type": "number",
+      "$value": "{Scale 05}"
+    },
+    "Font Weight": {
+      "$type": "number",
+      "$value": "{Weight Semibold}"
+    },
+    "Size Large": {
+      "$type": "number",
+      "$value": "{Scale 06}"
+    },
+    "Size Small": {
+      "$type": "number",
+      "$value": "{Scale 04}"
+    }
+  },
+  "Title Hero": {
+    "Font Family": {
+      "$type": "text",
+      "$value": "{Family Sans}"
+    },
+    "Size": {
+      "$type": "number",
+      "$value": "{Scale 10}"
+    },
+    "Font Weight": {
+      "$type": "number",
+      "$value": "{Weight Bold}"
+    }
+  },
+  "Subheading": {
+    "Font Family": {
+      "$type": "text",
+      "$value": "{Family Sans}"
+    },
+    "Size Small": {
+      "$type": "number",
+      "$value": "{Scale 03}"
+    },
+    "Size Medium": {
+      "$type": "number",
+      "$value": "{Scale 04}"
+    },
+    "Size Large": {
+      "$type": "number",
+      "$value": "{Scale 05}"
+    },
+    "Font Weight": {
+      "$type": "number",
+      "$value": "{Weight Regular}"
+    }
+  }
+}

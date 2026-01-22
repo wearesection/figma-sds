@@ -1,0 +1,18 @@
+{
+  "Device": {
+    "$type": "text",
+    "$value": "mobile"
+  },
+  "Device Width": {
+    "$type": "number",
+    "$value": 375
+  },
+  "Root Font Size": {
+    "$type": "number",
+    "$value": "{Scale 03}"
+  },
+  "Scale": {
+    "$type": "number",
+    "$value": 1.25
+  }
+}
