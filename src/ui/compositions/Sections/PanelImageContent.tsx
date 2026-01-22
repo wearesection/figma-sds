@@ -1,22 +1,24 @@
-import { ReactNode } from "react";
+import clsx from "clsx";
+import { ComponentPropsWithoutRef } from "react";
 import { useMediaQuery } from "hooks";
+import { IconChevronLeft, IconChevronRight } from "icons";
 import { Flex, Section } from "layout";
 import {
-  IconButton,
   Tag,
-  Text,
+  TextPrice,
   TextContentHeading,
-  TextHeading,
   TextList,
   TextListItem,
-  TextPrice,
+  IconButton,
+  Text,
+  TextHeading,
 } from "primitives";
 import { Card } from "../Cards/Cards";
-import { IconChevronLeft, IconChevronRight } from "icons";
+import "./PanelImageContent.css";
 
-export type PanelImageContentProps = {
-  // Image section
-  imageSrc: string;
+export type PanelImageContentProps = ComponentPropsWithoutRef<"div"> & {
+  // Image area
+  imageSrc?: string;
   imageAlt?: string;
   tagText?: string;
   tagScheme?: "brand" | "danger" | "positive" | "warning" | "neutral";
@@ -25,166 +27,153 @@ export type PanelImageContentProps = {
   priceCurrency: string;
   priceLabel?: string;
 
-  // Content section
+  // Content area
   heading: string;
   subheading?: string;
   listItems?: string[];
 
-  // Card content (flexible via children slots)
-  cardHeading?: string;
-  cardBody?: string;
-  cardAsset?: ReactNode;
-
-  // Navigation
+  // Card carousel
+  cards?: Array<{
+    heading: string;
+    body: string;
+    imageSrc?: string;
+  }>;
+  currentCardIndex?: number;
   onPreviousPress?: () => void;
   onNextPress?: () => void;
 
-  // Section wrapper props
+  // Section styling
+  backgroundColor?: "brand" | "neutral" | "subtle" | "stroke";
   padding?: "600" | "800" | "1200" | "1600";
-  variant?: "brand" | "neutral" | "stroke" | "subtle";
 };
 
+/**
+ * Panel section with image on left (desktop) or top (mobile) and content on right (desktop) or bottom (mobile).
+ * Displays product/pricing information with optional tag, list items, and card carousel.
+ */
 export function PanelImageContent({
   imageSrc,
-  imageAlt,
+  imageAlt = "",
   tagText,
-  tagScheme = "positive",
-  tagVariant = "secondary",
+  tagScheme = "brand",
+  tagVariant = "primary",
   priceAmount,
   priceCurrency,
-  priceLabel = "/ mo",
+  priceLabel,
   heading,
   subheading,
   listItems,
-  cardHeading,
-  cardBody,
-  cardAsset,
+  cards,
+  currentCardIndex = 0,
   onPreviousPress,
   onNextPress,
-  padding = "1600",
-  variant = "neutral",
+  backgroundColor,
+  padding,
+  className,
+  ...props
 }: PanelImageContentProps) {
   const { isTabletDown } = useMediaQuery();
 
+  const currentCard = cards?.[currentCardIndex];
+
   return (
-    <Section variant={variant} padding={isTabletDown ? "600" : padding}>
+    <Section
+      variant={backgroundColor}
+      padding={padding || (isTabletDown ? "600" : "1600")}
+      className={clsx(className, "panel-image-content")}
+      {...props}
+    >
       <Flex
         direction={isTabletDown ? "column" : "row"}
         gap={isTabletDown ? "600" : "1200"}
-        alignPrimary={isTabletDown ? "center" : "start"}
         alignSecondary={isTabletDown ? "center" : "start"}
       >
-        {/* Image Section */}
-        <div
-          style={{
-            position: "relative",
-            width: isTabletDown ? "100%" : "484px",
-            maxWidth: isTabletDown ? "420px" : "484px",
-            aspectRatio: "1",
-            backgroundColor: "var(--sds-color-slate-200)",
-            borderRadius: "var(--sds-size-radius-200)",
-            overflow: "hidden",
-          }}
-        >
-          {/* Background image with reduced opacity */}
-          {imageSrc && (
-            <img
-              src={imageSrc}
-              alt={imageAlt || ""}
-              style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "contain",
-                opacity: 1,
-              }}
-            />
-          )}
+        {/* Image Panel */}
+        <div className="panel-image-content-image-wrapper">
+          {imageSrc && <img src={imageSrc} alt={imageAlt} />}
 
-          {/* Overlay elements using Flex for positioning */}
+          {/* Overlay: Tag at top, Price at bottom */}
           <Flex
             direction="column"
             alignPrimary="space-between"
-            style={{
-              position: "absolute",
-              inset: 0,
-              padding: "var(--sds-size-space-400)",
-            }}
+            className="panel-image-content-overlay"
           >
-            <Flex alignSecondary="start">
-              {tagText && (
-                <Tag scheme={tagScheme} variant={tagVariant}>
-                  {tagText}
-                </Tag>
-              )}
-            </Flex>
-            <Flex alignSecondary="start">
-              <TextPrice
-                currency={priceCurrency}
-                price={priceAmount}
-                label={priceLabel}
-                size="large"
-              />
-            </Flex>
+            {tagText && (
+              <Tag scheme={tagScheme} variant={tagVariant}>
+                {tagText}
+              </Tag>
+            )}
+            <TextPrice
+              currency={priceCurrency}
+              price={priceAmount}
+              label={priceLabel}
+              size="large"
+            />
           </Flex>
         </div>
 
-        {/* Content Section */}
+        {/* Content Panel */}
         <Flex
           direction="column"
           gap="600"
           alignSecondary={isTabletDown ? "center" : "start"}
-          style={
-            isTabletDown ? { maxWidth: "420px", width: "100%" } : undefined
-          }
         >
-          {/* 1. Heading and Subheading */}
           <TextContentHeading
             heading={heading}
             subheading={subheading}
             align={isTabletDown ? "center" : "start"}
           />
 
-          {/* 2. List Items */}
           {listItems && listItems.length > 0 && (
-            <TextList density="default">
-              {listItems.map((item, index) => (
-                <TextListItem key={index}>{item}</TextListItem>
+            <TextList>
+              {listItems.map((item, i) => (
+                <TextListItem key={i}>{item}</TextListItem>
               ))}
             </TextList>
           )}
 
-          {/* 3. Card Component */}
-          {(cardHeading || cardBody) && (
-            <Card direction="horizontal" variant="stroke" asset={cardAsset}>
-              {cardHeading && <TextHeading>{cardHeading}</TextHeading>}
-              {cardBody && <Text>{cardBody}</Text>}
+          {currentCard && (
+            <Card
+              direction="horizontal"
+              variant="stroke"
+              padding="600"
+              asset={
+                currentCard.imageSrc ? (
+                  <img
+                    src={currentCard.imageSrc}
+                    alt={currentCard.heading}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : undefined
+              }
+            >
+              <Flex direction="column" gap="200">
+                <TextHeading>{currentCard.heading}</TextHeading>
+                <Text>{currentCard.body}</Text>
+              </Flex>
             </Card>
           )}
 
-          {/* 4. Navigation Buttons */}
-          {(onPreviousPress || onNextPress) && (
-            <Flex
-              direction="row"
-              gap="300"
-              alignPrimary="end"
-              style={{ width: "100%" }}
-            >
+          {cards && cards.length > 1 && (onPreviousPress || onNextPress) && (
+            <Flex gap="300" alignPrimary="end">
               {onPreviousPress && (
                 <IconButton
-                  aria-label="Previous"
-                  onPress={onPreviousPress}
+                  aria-label="Previous card"
                   variant="neutral"
+                  onPress={onPreviousPress}
                 >
                   <IconChevronLeft />
                 </IconButton>
               )}
               {onNextPress && (
                 <IconButton
-                  aria-label="Next"
-                  onPress={onNextPress}
+                  aria-label="Next card"
                   variant="neutral"
+                  onPress={onNextPress}
                 >
                   <IconChevronRight />
                 </IconButton>
