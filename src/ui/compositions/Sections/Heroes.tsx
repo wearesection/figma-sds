@@ -17,3 +17,5 @@ export function Hero({ children, flexProps, ...sectionProps }: HeroProps) {
     </Section>
   );
 }
+
+export * from "./HeroImageWithReviews";

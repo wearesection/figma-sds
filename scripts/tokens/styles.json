@@ -271,7 +271,7 @@
     "fontStyle": "normal"
   },
   {
-    "key": "41bfc984ba768095400f8a022edd454968162c94",
+    "key": "93e34d0542ebfe365e55035c1c18843965e0264e",
     "name": "Drop Shadow/300",
     "styleType": "EFFECT",
     "remote": false,
@@ -361,7 +361,7 @@
     ]
   },
   {
-    "key": "2d01cd4dd5f75236392138f6c1e10e313e217abf",
+    "key": "ced858c6f7cb1debde5b989359a28ce0173c9056",
     "name": "Drop Shadow/200",
     "styleType": "EFFECT",
     "remote": false,
@@ -449,7 +449,7 @@
     ]
   },
   {
-    "key": "844cb38efcc62bad149e9f8e82b049aafa7a9f14",
+    "key": "837c90514b0055c9f5c2137f28ad17d1fce06f9a",
     "name": "Drop Shadow/100",
     "styleType": "EFFECT",
     "remote": false,
@@ -498,7 +498,7 @@
     ]
   },
   {
-    "key": "22a5720258ee85f4db18164a837c72af9bf36211",
+    "key": "77a76b6554b4ede7dc2dd9ffca47da7fbf5967d0",
     "name": "Drop Shadow/400",
     "styleType": "EFFECT",
     "remote": false,
@@ -588,7 +588,7 @@
     ]
   },
   {
-    "key": "d61d50a6c230a64bafa23f076ca12209d159d3f1",
+    "key": "2a252350cf373d420d224bded1b76b190c157ac1",
     "name": "Drop Shadow/500",
     "styleType": "EFFECT",
     "remote": false,
@@ -678,7 +678,7 @@
     ]
   },
   {
-    "key": "a3f45659b320637d1041a0719886b10bd4ca4b74",
+    "key": "094095bebfb0561665d6ad0da22c063205275245",
     "name": "Drop Shadow/600",
     "styleType": "EFFECT",
     "remote": false,
@@ -728,7 +728,7 @@
     ]
   },
   {
-    "key": "a3a68a1e5d26ac05d0691dbc3a1524483a6fe547",
+    "key": "069a6924d3f70f75bd28bc372efc3defd8909ae8",
     "name": "Inner Shadow/100",
     "styleType": "EFFECT",
     "remote": false,
@@ -776,7 +776,7 @@
     ]
   },
   {
-    "key": "412d66d8d6316d332a7543a60600bf2ef9bd2dfb",
+    "key": "4ba8a14a32601785fb2d6ebf3b658749bbb9f66b",
     "name": "Inner Shadow/200",
     "styleType": "EFFECT",
     "remote": false,
@@ -824,7 +824,7 @@
     ]
   },
   {
-    "key": "7d9c37ac4f1b795a0d5e046de7add2212537c502",
+    "key": "436ea4b1771f055f7d1994754ae662e17c9ae0a6",
     "name": "Inner Shadow/300",
     "styleType": "EFFECT",
     "remote": false,
@@ -873,7 +873,7 @@
     ]
   },
   {
-    "key": "af59b9b0607b46632a5e162cde037982ae6875f2",
+    "key": "8ca7540f3bbc8817ec752c6c7d6e827a4d996dc8",
     "name": "Inner Shadow/400",
     "styleType": "EFFECT",
     "remote": false,
@@ -922,7 +922,7 @@
     ]
   },
   {
-    "key": "83f59232317bcbb4984fec37cc6f2599fb13cb2d",
+    "key": "72a694196fd85f08823a4b6c92a472a999e2cfeb",
     "name": "Inner Shadow/500",
     "styleType": "EFFECT",
     "remote": false,
@@ -971,7 +971,7 @@
     ]
   },
   {
-    "key": "8e7987f1bc0e54821a58cb5ef97d465c63a0c7de",
+    "key": "29f4deb48791b5688f10023ff3197aac800163a6",
     "name": "Inner Shadow/600",
     "styleType": "EFFECT",
     "remote": false,
@@ -1020,7 +1020,7 @@
     ]
   },
   {
-    "key": "51341f0de91736132fa1aabef390bda0d403dbce",
+    "key": "8f7b659b4717de42d3d7be57d1c3d6c0a7f1b139",
     "name": "Blur/Overlay",
     "styleType": "EFFECT",
     "remote": false,
@@ -1041,7 +1041,7 @@
     ]
   },
   {
-    "key": "a9e3e977b3a5f3d39c60df9268bcfcf0465fdb96",
+    "key": "691cd8efdad26f8691efec67b809eb099333b369",
     "name": "Blur/Layer",
     "styleType": "EFFECT",
     "remote": false,
@@ -1062,7 +1062,7 @@
     ]
   },
   {
-    "key": "c27c483297e637a9136a29b09a92360a84ba293d",
+    "key": "0af63ae05a92a4ee592976f923b24cd5634a1ce0",
     "name": "Blur/Glass",
     "styleType": "EFFECT",
     "remote": false,
@@ -1083,7 +1083,7 @@
     ]
   },
   {
-    "key": "b6cb6cc3526049c20430b096b6ed65c5eba1c246",
+    "key": "6a305d7d9c6839e0ad5bb69af3c8ec5bce0b0b72",
     "name": "Image Placeholder",
     "styleType": "FILL",
     "remote": false,
